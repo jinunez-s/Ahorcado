@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uso de selectores con JQuery</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-3">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">selectores</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Catalogos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Alumnos</a></li>
+                      <li><a class="dropdown-item" href="#">Asignaciones</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Carreras</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+          <div class="jumbotron">
+              <h1 class="display-3">Casos de uso de JQuery</h1>
+              <p class="lead">Manejo de selectores con CSS y JavaScript</p>
+              <hr class="my-2">
+              <p>Para más información presione el siguiente boton</p>
+              <p class="lead">
+                  <a class="btn btn-dark btn-lg" href="Jumbo action link" role="button">JQuery</a>
+              </p>
+          </div>
+          <div class="row">
+              <table class="table">
+                  <thead class="thead-dark">
+                      <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Selectores</th>
+                          <th scope="col">Seleccionado</th>
+                          <th scope="col">Ejemplo</th>
+
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td scope="row">1</td>
+                          <td>$("*")</td>
+                          <td>Selecciona todos los elementos</td>
+                          <td><button class="btn btn-success" id="asterisco">Seleccionar</button></td>
+                      </tr>
+                      <tr>
+                        <td scope="row">2</td>
+                        <td>$("#correo")</td>
+                        <td>Selecciona el elemento que contenga el id <strong>Correo</strong></td>
+                        <td><button class="btn btn-outline-success" id="numeral-correo">Seleccionar</button></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">3</td>
+                        <td>$(".campo")</td>
+                        <td>Selecciona los elementos que contengan la clase <strong>Campo</strong></td>
+                        <td><button class="btn btn-group" id="campo">Seleccionar</button></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">4</td>
+                        <td>$("div")</td>
+                        <td>Selecciona todos los elementos <strong>Div</strong></td>
+                        <td><button class="btn btn-info" id="div">Seleccionar</button></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">5</td>
+                        <td>$("p")</td>
+                        <td>Selecciona todos los elementos <strong>P</strong> (Parrafo)</td>
+                        <td><button class="btn btn-link" id="parrafo">Seleccionar</button></td>
+                    </tr>
+                    <tr>
+                        <td scope="row">6</td>
+                        <td>$("input")</td>
+                        <td>Selecciona todos los elementos <strong>INPUT</strong> </td>
+                        <td><button class="btn btn-outline-danger" id="input">Seleccionar</button></td>
+                    </tr>
+                  </tbody>
+              </table>
+          </div>
+          <div class="row">
+              <h2 class="bg-success text-center text-white">Elementos de Ejemplo</h2>
+                <div class="elementos-internos">
+                    <div class="elemento-jquery">
+                        <label form="correo" class="my-5"> Correo electronico</label>
+                        <input class="selector-correo" type="text" id="correo" value="julionr14@gmail.com">
+                        <div>
+                            <input type="text" value="clase campo" class="campo">
+                            <input type="text" value="clase campo" class="campo">
+                            <input type="text" value="clase campo" class="campo">
+                            <input type="text" value="clase campo" class="campo">
+                            <input type="text" value="clase campo" class="campo">
+                            <input type="text" value="clase campo" class="campo">
+                        </div>
+                        <div id="div" class="div-1">DIV</div>
+                        <div id="div" class="div-1">DIV</div>
+                        <div id="div" class="div-1">DIV</div>
+                        <p>P</p>
+                        <p>P</p>
+                        <input type="text" value="INPUT">
+                        <input type="text" value="INPUT">
+                        <input type="text" value="INPUT">
+
+                    </div>
+                </div>
+
+          </div>
+    </div>
+    <!--Importando SCRIPTS-->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
