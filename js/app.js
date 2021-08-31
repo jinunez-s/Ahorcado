@@ -4,7 +4,6 @@ var btnIntentar = document.getElementById('btn-intentar');
 var letra = document.getElementById('txt-intentos');
 var palabraAdivinar = document.getElementById('lbl-palabra');
 var palabraAuxiliar = '';
-var respuesta = validar(intento);
 var lblIntentos = document.getElementById('lbl-intentos');
 
 /**
@@ -23,11 +22,11 @@ var contador = 5;
 var ahorcadoUno = {
     url:'./assets/img/1.png',
     imagen: Image
-}
+};
 var ahorcadoDos = {
     url:'./assets/img/2.png',
     imagen: Image
-}
+};
 /*La propiedad imagen es de tipo objeto Image*/
 /**
  * se hace referencia a la imagen que se encuentra en assets de manera manual
@@ -35,36 +34,36 @@ var ahorcadoDos = {
 var ahorcadoTres = {
     url:'./assets/img/3.png',
     imagen: Image
-}
+};
 var ahorcadoCuatro = {
     url:'./assets/img/4.png',
     imagen: Image
-}
+};
 var ahorcadoCinco = {
     url:'./assets/img/5.png',
     imagen: Image
-}
+};
 /**---------------------------------------------------------------------------------------------------------------------------------------------- */
 ahorcadoUno.imagen = new Image();
 ahorcadoUno.imagen.src = ahorcadoUno.url;
-ahorcadoUno.imagen.addEventListener('load', function(){dibujar()});
+ahorcadoUno.imagen.addEventListener('load', function(){dibujar();});
 
 ahorcadoDos.imagen = new Image();
 ahorcadoDos.imagen.src = ahorcadoDos.url;
-ahorcadoUno.imagen.addEventListener('load', function(){dibujar()});
+ahorcadoUno.imagen.addEventListener('load', function(){dibujar();});
 
 ahorcadoTres.imagen = new Image();
 ahorcadoTres.imagen.src = ahorcadoTres.url;
-ahorcadoTres.imagen.addEventListener('load', function(){dibujar()});
+ahorcadoTres.imagen.addEventListener('load', function(){dibujar();});
 
 
 ahorcadoCuatro.imagen = new Image();
 ahorcadoCuatro.imagen.src = ahorcadoCuatro.url;
-ahorcadoCuatro.imagen.addEventListener('load', function(){dibujar()});
+ahorcadoCuatro.imagen.addEventListener('load', function(){dibujar();});
 
 ahorcadoCinco.imagen = new Image();
 ahorcadoCinco.imagen.src = ahorcadoCinco.url;
-ahorcadoCinco.imagen.addEventListener('load', function(){dibujar()});
+ahorcadoCinco.imagen.addEventListener('load', function(){dibujar();});
 
 /**---------------------------------------------------------------------------------------------------------------------------------------------- */
 btnIntentar.addEventListener('click', function(){
@@ -72,7 +71,7 @@ btnIntentar.addEventListener('click', function(){
     var respuesta = validar(intento);
     var transicion = '';
     
-    for(i =0; i< palabraAuxiliar.length; i++){
+    for(var i =0; i< palabraAuxiliar.length; i++){
         if(palabraAuxiliar.substring(i,i+1) === '#'){
             if(palabraAuxiliar.substring(i,i+1) === respuesta.substring(i,i+1)){
                 transicion = transicion + palabraAuxiliar.substring(i,i+1);
@@ -86,7 +85,7 @@ btnIntentar.addEventListener('click', function(){
             /**Aqui cuenta cuantas ya se adivinaron */
         }   /**Aqui pasa por cada letra */
     }
-    /*
+    
     if( palabraAuxiliar === transicion){
         contador = contador - 1;
         if( contador === 0 ){
@@ -102,43 +101,45 @@ btnIntentar.addEventListener('click', function(){
             alert('Te quedan ' +  contador  + ' intento.');
         }
     }
-    */
+    
     if(transicion === palabra){
         alert('felicidades!!! has ganado');
         location.reload();
     }else{
-        if(ValidarRespuesta(respuesta) === true){
-            intentos = intentos -1;
+        if(ValidarRespuesta(respuesta) === false){
+            intentos = intentos - 1;
             numeroImagen = numeroImagen + 1;
             dibujar();
             if(intentos === 0){
-                alert('Ahorcado!! has perdido el juego!')
+                alert('Ahorcado!! has perdido el juego!');
                 location.reload();
             }else{
                 numeroImagen = numeroImagen + 1;
                 dibujar();
-                lblIntentos.innerHTML = `<span class="badge bg-danger">${intentos}</span>`;
+                lblIntentos.innerHTML =`<span class="badge bg-danger">${intentos}</span>`;
             }
-        }else{
+        }
+        else{
             palabraAuxiliar = transicion;
             palabraAdivinar.innerHTML = palabraAuxiliar;     
         }
     }
+    
 });
 /**---------------------------------------------------------------------------------------------------------------------------------------------- */
 function dibujar(){
     if(numeroImagen == 1){
         lapiz.drawImage(ahorcadoUno.imagen, -250,-20);
-        }else if(numeroImagen == 2){
-            lapiz.drawImage(ahorcadoDos.imagen, -250,-20);
-        }else if(numeroImagen == 3){
-            lapiz.drawImage(ahorcadoTres.imagen, -250,-20);
-        }else if(numeroImagen == 4){
-            lapiz.drawImage(ahorcadoCuatro.imagen, -250,-20);
-        }else if(numeroImagen == 5){
-            lapiz.drawImage(ahorcadoCinco.imagen, -250,-20);
-            alert('Ahorcado!! has perdido en el juego ;(')
-        }
+    }else if(numeroImagen == 2){
+        lapiz.drawImage(ahorcadoDos.imagen, -250,-20);
+    }else if(numeroImagen == 3){
+        lapiz.drawImage(ahorcadoTres.imagen, -250,-20);
+    }else if(numeroImagen == 4){
+        lapiz.drawImage(ahorcadoCuatro.imagen, -250,-20);
+    }else if(numeroImagen == 5){
+        lapiz.drawImage(ahorcadoCinco.imagen, -250,-20);
+        alert('Ahorcado!! has perdido en el juego ;(');
+    }
 }
 /**---------------------------------------------------------------------------------------------------------------------------------------------- */
 function ValidarRespuesta(cadena){
@@ -188,7 +189,7 @@ function obtenerPalabraAdivinar(numero){
 /**---------------------------------------------------------------------------------------------------------------------------------------------- */
 function codificarPalabra(palabra){
     var respuesta = '';
-    for(i = 0; i < palabra.length; i++){
+    for(var i = 0; i < palabra.length; i++){
         if(palabra.substring(i,i+1) != '#'){
             respuesta = respuesta + '#';
         }
@@ -199,7 +200,7 @@ function codificarPalabra(palabra){
 
 function validar(letra){
     var respuesta = '';
-    for(i = 0; i < palabra.length; i++){
+    for(var i = 0; i < palabra.length; i++){
         if(letra === palabra.substring(i,i+1)){
             respuesta = respuesta + letra;  
 
@@ -226,18 +227,18 @@ $(function(){
     });
     $('#numeral-correo').click(function(){
         $('#correo').addClass('selector');
-    })
+    });
     $('#campo').click(function(){
         $('.campo').addClass('selector');
     });
     $('#div').click(function(){
-        $('div').addClass('selector')
+        $('div').addClass('selector');
     });
     $('#parrafo').click(function(){
-        $('p').addClass('selector')
+        $('p').addClass('selector');
     });
     $('#input').click(function(){
-        $('input').addClass('selector')
+        $('input').addClass('selector');
     });
 });
 
