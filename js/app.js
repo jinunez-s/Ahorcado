@@ -1,5 +1,5 @@
 var canvas = document.getElementById('fondo');
-var lapiz = canvas.getContext('2d');
+var lapiz = canvas.getContext('2d');//objeto lapiz 
 var btnIntentar = document.getElementById('btn-intentar');
 var letra = document.getElementById('txt-intentos');
 var palabraAdivinar = document.getElementById('lbl-palabra');
@@ -22,11 +22,11 @@ var contador = 5;
 var ahorcadoUno = {
     url:'./assets/img/1.png',
     imagen: Image
-};
+}
 var ahorcadoDos = {
     url:'./assets/img/2.png',
     imagen: Image
-};
+}
 /*La propiedad imagen es de tipo objeto Image*/
 /**
  * se hace referencia a la imagen que se encuentra en assets de manera manual
@@ -34,36 +34,36 @@ var ahorcadoDos = {
 var ahorcadoTres = {
     url:'./assets/img/3.png',
     imagen: Image
-};
+}
 var ahorcadoCuatro = {
     url:'./assets/img/4.png',
     imagen: Image
-};
+}
 var ahorcadoCinco = {
     url:'./assets/img/5.png',
     imagen: Image
-};
+}
 /**---------------------------------------------------------------------------------------------------------------------------------------------- */
 ahorcadoUno.imagen = new Image();
 ahorcadoUno.imagen.src = ahorcadoUno.url;
-ahorcadoUno.imagen.addEventListener('load', function(){dibujar();});
+ahorcadoUno.imagen.addEventListener('load', function(){dibujar()});
 
 ahorcadoDos.imagen = new Image();
 ahorcadoDos.imagen.src = ahorcadoDos.url;
-ahorcadoUno.imagen.addEventListener('load', function(){dibujar();});
+ahorcadoUno.imagen.addEventListener('load', function(){dibujar()});
 
 ahorcadoTres.imagen = new Image();
 ahorcadoTres.imagen.src = ahorcadoTres.url;
-ahorcadoTres.imagen.addEventListener('load', function(){dibujar();});
+ahorcadoTres.imagen.addEventListener('load', function(){dibujar()});
 
 
 ahorcadoCuatro.imagen = new Image();
 ahorcadoCuatro.imagen.src = ahorcadoCuatro.url;
-ahorcadoCuatro.imagen.addEventListener('load', function(){dibujar();});
+ahorcadoCuatro.imagen.addEventListener('load', function(){dibujar()});
 
 ahorcadoCinco.imagen = new Image();
 ahorcadoCinco.imagen.src = ahorcadoCinco.url;
-ahorcadoCinco.imagen.addEventListener('load', function(){dibujar();});
+ahorcadoCinco.imagen.addEventListener('load', function(){dibujar()});
 
 /**---------------------------------------------------------------------------------------------------------------------------------------------- */
 btnIntentar.addEventListener('click', function(){
@@ -86,45 +86,25 @@ btnIntentar.addEventListener('click', function(){
         }   /**Aqui pasa por cada letra */
     }
     
-    if( palabraAuxiliar === transicion){
-        contador = contador - 1;
-        if( contador === 0 ){
-            canvas.drawImage(ahorcadoCinco.url);
-
-            alert('Lo siento, has perdido!');
-            location.reload();
-        }
-        if( contador > 1){
-            alert('Te quedan ' +  contador  + ' intentos.');
-        }
-        if(contador === 1 ){
-            alert('Te quedan ' +  contador  + ' intento.');
-        }
-    }
-    
     if(transicion === palabra){
         alert('felicidades!!! has ganado');
-        location.reload();
+       //location.reload();
     }else{
-        if(ValidarRespuesta(respuesta) === false){
+        if(validarRespuesta(respuesta) === false){
             intentos = intentos - 1;
             numeroImagen = numeroImagen + 1;
             dibujar();
             if(intentos === 0){
-                alert('Ahorcado!! has perdido el juego!');
-                location.reload();
-            }else{
-                numeroImagen = numeroImagen + 1;
-                dibujar();
-                lblIntentos.innerHTML =`<span class="badge bg-danger">${intentos}</span>`;
+                alert(' Ahorcado!! has perdido el juego! ;(');
+               // location.reload();
+            } else {
+                lblIntentos.innerHTML = `<span class="badge bg-danger">${intentos}</span>`;
             }
-        }
-        else{
+        } else{
             palabraAuxiliar = transicion;
-            palabraAdivinar.innerHTML = palabraAuxiliar;     
+            palabraAdivinar.innerHTML = palabraAuxiliar; 
         }
     }
-    
 });
 /**---------------------------------------------------------------------------------------------------------------------------------------------- */
 function dibujar(){
@@ -142,10 +122,10 @@ function dibujar(){
     }
 }
 /**---------------------------------------------------------------------------------------------------------------------------------------------- */
-function ValidarRespuesta(cadena){
+function validarRespuesta(cadena){
     var resultado = false;
     for(var i = 0; i < cadena.length; i++){
-        if(cadena.substring(i, i+1) != '#'){
+        if(cadena.substring(i,i+1) != '#'){
             resultado = true;
             break;
         }
